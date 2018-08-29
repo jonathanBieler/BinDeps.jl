@@ -1,29 +1,28 @@
 using Compat
-using Compat.Test, Compat.Unicode
+using Compat.Test, Compat.Unicode, Compat.Libdl, Compat.Pkg
 using BinDeps
 
-if VERSION >= v"0.7.0-DEV.3382"
-    using Libdl
-end
 
-Pkg.build("Cairo")  # Tests apt-get code paths
-using Cairo
-Pkg.build("HttpParser")  # Tests build-from-source code paths
-using HttpParser
-Pkg.build("GSL")
-using GSL
+#Pkg.build("Cairo")  # Tests apt-get code paths
+#using Cairo
+#Pkg.build("HttpParser")  # Tests build-from-source code paths
+#using HttpParser
+#Pkg.build("GSL")
+#using GSL
+#Pkg.build("Gumbo") # Test Autotools code paths
+#using Gumbo
 
+Pkg.add("GLFW") 
+using GLFW
 
-Pkg.build("Gumbo") # Test Autotools code paths
-using Gumbo
-
-
+Pkg.add("Yeppp") 
+using Yeppp
 
 # PR 171
 @test BinDeps.lower(nothing, nothing) === nothing
 
 # PR 271
-BinDeps.debug("Cairo")
+# BinDeps.debug("Cairo")
 
 let gv = glibc_version()
     if Compat.Sys.islinux()
