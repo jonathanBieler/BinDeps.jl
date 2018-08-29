@@ -1,0 +1,6 @@
+authors = ["Jonathan Bieler <jonathan.bieler@alumni.epfl.ch>"]
+name = "BinDeps"
+uuid = "693cb048-ab5f-11e8-2a9f-591c927b9def"
+version = "0.1.0"
+
+[deps]
